@@ -21,6 +21,7 @@
  *
  * This is how you would structure the game objects in an actual game
  * application in Unity or another similar framework.
+<<<<<<< HEAD
  */
 
  class NPC {
@@ -149,3 +150,6 @@ class FleshEatingDaisy extends Plant {
     super();
   }
 }
+=======
+ */
+>>>>>>> 60bcc70578fcdf89fced45fd84997091577e9d6b
