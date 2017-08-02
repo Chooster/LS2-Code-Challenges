@@ -11,6 +11,23 @@
 // insertionSort([2, 1, 3, 7, 4, 2, 9, 3, 8]); // yields [1, 2, 2, 3, 3, 4, 7, 8, 9]
 
 const insertionSort = (array) => {
-  // Your code goes here. Feel free to add helper functions if needed.
+  let temp;
+  let i = 1;
+  while (i < array.length) {
+    idx = i;
+    while (idx < array.length) {
+      if (array[idx-1] > array[idx]) {
+        let sub = idx - 1;
+        while (sub >= 0 && (array[sub] > array[idx])) {
+          temp = array[idx];
+          array[idx] = array[sub];
+          array[sub] = temp;
+          sub--;
+        }
+      }
+      idx++;
+    }
+    i++;
+  }
   return array;
 };
