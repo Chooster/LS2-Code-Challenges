@@ -9,24 +9,14 @@ const arr = [
 console.log(arr[0], arr[1], arr[2]);
 
 const rotateNinety = (image) => {
-  const swapRows = () => {
-    for (let i = 0, k = 2; i < k; i++, k--) {
-      const temp = image[i];
-      image[i] = image[k];
-      image[k] = temp;
+  for (let i = 0; i < image.length / 2; i++) {
+    for (let j = 0; j < image.length - i - 1; j++) {
+      let temp = arr[i][j];
+      arr[i][j] = arr[image.length - i - 1][image.length - j - 1];
+      arr[image.length - i - 1][image.length - j - 1] = arr[image.length - j - 1][i];
+      arr[image.length - j - 1][i] = temp;
     }
-  };
-  const transpose = () => {
-    for (let i = 0; i < image.length; i++) {
-      for (let j = 0; j < image[0].length; j++) {
-        let temp = image[i][j];
-        image[i][j] = image[image.length - 1 - i][j];
-        image[image.length - 1 - i][j] = temp;
-      }
-    }
-  };
-  swapRows(image);
-  transpose(image);
+  }
   return image;
 };
 

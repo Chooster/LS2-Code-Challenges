@@ -11,5 +11,14 @@
  *                   */
 
 const rockPaperScissors = () => {
-	// TODO: your solution here
+	const arr = [];
+  const temp = ['rock', 'paper', 'scissors'];
+  for (let i = 0; i < temp.length; i++) {
+		for (let j = 0; j < temp.length; j++) {
+			for (let k = 0; k < temp.length; k++) {
+				arr.push([temp[i], temp[j], temp[k]]);
+			}
+		}
+	}
+	return arr;
 };

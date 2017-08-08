@@ -11,9 +11,8 @@
 
 const NAND = (x, y) => {
 	// You can use whatever JS operators that you would like: &&, ||, !
-  if (!x && !y) return 1;
-  else if (x && y) return 0;
-  else if (x || y) return 1;
+  if (x && y) return 0;
+  return 1;
 };
 
 const NOT = (n) => {
@@ -32,9 +31,8 @@ const AND = (x, y) => {
 const OR = (x, y) => {
 	// Do not use ||, &&, or !
 	// You can use any of the functions that you have already written
-  if (x) return 1;
-  if (y) return 1;
-  return 0;
+  if (AND(NOT(x), NOT(y))) return 0;
+  return 1;
 };
 
 const XOR = (x, y) => {

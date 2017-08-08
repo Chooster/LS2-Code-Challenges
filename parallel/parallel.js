@@ -38,3 +38,10 @@
  *
  *
  */
+
+ const parallel = (arr, cb) => {
+   arr.forEach((item) => {
+     return item(cb);
+   });
+   return arr;
+ };
