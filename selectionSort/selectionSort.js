@@ -7,5 +7,19 @@
  */
 
 const selectionSort = (arr) => {
-
+  let smallest = [arr[0], 0];
+  let index = 0;
+  let temp;
+  while (index < arr.length) {
+    for (let i = index; i < arr.length; i++) {
+      if (arr[i] < smallest[0]) smallest = [arr[i], i];
+    }
+    if (smallest[0] !== arr[index]) {
+      temp = arr[index];
+      arr[index] = smallest[0];
+      arr[smallest[1]] = temp;
+    }
+    smallest[0] = arr[++index];
+  }
+  return arr;
 };
