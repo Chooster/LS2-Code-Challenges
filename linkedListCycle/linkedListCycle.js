@@ -29,3 +29,68 @@
  * Constraint 3: Do not mutate the original nodes in any way
  * Hint: Search for Floyd's Tortoise and Hare algorithm.
  */
+
+const hasCycle = (node) => {
+  let pSlow = node;
+  let pFast = node;
+  while (pFast.next.next) {
+    pSlow = pSlow.next;
+    pFast = pFast.next.next;
+    if (pSlow === pFast) return true;
+  }
+  return false;
+};
+
+ class Node {
+   constructor(element) {
+     this.value = element;
+     this.next = null;
+     this.prev = null;
+   }
+ }
+ class LinkedList {
+   constructor() {
+     this.head = null;
+     this.tail = null;
+    // Do not modify anything inside of the constructor
+   }
+   addToTail(element) {
+     const currentNode = new Node(element);
+     if (!this.head) this.head = currentNode;
+     else {
+       this.tail.next = currentNode;
+       currentNode.prev = this.tail;
+     }
+     this.tail = currentNode;
+   }
+   removeHead() {
+     if (!this.head) return;
+     if (!this.head.next) {
+       const prevHead = this.head.value;
+       this.head = null;
+       this.tail = null;
+       return prevHead;
+     }
+     const prevHead = this.head.value;
+     this.head = this.head.next;
+     if (this.head.prev) this.head.prev = null;
+     return prevHead;
+   }
+   contains(element) {
+     let currentNode = this.head;
+     if (currentNode.value === element) return true;
+     while (currentNode.next) {
+       if (currentNode.value === element) return true;
+       currentNode = currentNode.next;
+     }
+     return false;
+   }
+   // print() {
+   //   let currentNode = this.head;
+   //   while (currentNode.next) {
+   //     console.log(currentNode);
+   //     currentNode = currentNode.next;
+   //   }
+   //   console.log(currentNode);
+   // }
+ }
