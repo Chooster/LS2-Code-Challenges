@@ -39,19 +39,28 @@ class LRUCacheItem {
 
 class LRUCache {
   constructor(limit = 10) {
-    
+    this.cache = new List();
+    this.limit = limit;
   }
 
   size() {
-
+    return this.cache.toArray().length;
   }
 
   get(key) {
-
+    const getArray = this.cache.toArray();
+    let ans;
+    getArray.forEach((obj, idx) => {
+      if (obj.hasOwnProperty(key)) ans = idx;
+    });
+    if (ans) return getArray[ans][key];
+    return null;
   }
 
   set(key, val) {
-
+    const obj = {};
+    obj[key] = val;
+    this.cache.shift(obj);
   }
 }
 
@@ -150,7 +159,7 @@ class List {
 
   // Convert to an array
   toArray() {
-    const next = this.head || this.tail;
+    let next = this.head || this.tail;
     const result = [];
     while (next) {
       result.push(next.val);
@@ -177,4 +186,4 @@ class List {
     if (this.prev) this.prev.next = this.next;
     if (this.next) this.next.prev = this.prev;
   }
-
+}

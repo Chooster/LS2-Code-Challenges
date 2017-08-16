@@ -31,12 +31,12 @@
  */
 
 const hasCycle = (node) => {
-  let pSlow = node;
-  let pFast = node;
-  while (pFast.next.next) {
-    pSlow = pSlow.next;
-    pFast = pFast.next.next;
-    if (pSlow === pFast) return true;
+  let slow = node;
+  let fast = node;
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) return true;
   }
   return false;
 };
@@ -85,12 +85,4 @@ const hasCycle = (node) => {
      }
      return false;
    }
-   // print() {
-   //   let currentNode = this.head;
-   //   while (currentNode.next) {
-   //     console.log(currentNode);
-   //     currentNode = currentNode.next;
-   //   }
-   //   console.log(currentNode);
-   // }
  }
